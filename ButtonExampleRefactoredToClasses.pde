@@ -13,6 +13,17 @@ abstract class Button {
   void setHighlightColor(color clr) { this.highlightColor = clr; }
   void setNormalColor(color clr) { this.normalColor = clr; }
   
+  void draw() {
+    if (isMouseOver()) {
+      fill(highlightColor);
+    } else {
+      fill(normalColor);
+    }
+    drawSpecifics();
+  }
+  
+  abstract protected void drawSpecifics();
+  
   boolean mousePressed() {
     return isMouseOver();
   }
@@ -27,12 +38,7 @@ class CircleButton extends Button {
     super(x, y, size);
   }
   
-  void draw() {
-    if (isMouseOver()) {
-      fill(highlightColor);
-    } else {
-      fill(normalColor);
-    }
+  protected void drawSpecifics() {
     stroke(0);
     ellipse(x, y, size, size); 
   }
@@ -55,12 +61,7 @@ class RectButton extends Button {
     super(x, y, size);
   }
   
-  void draw() {
-    if (isMouseOver()) {
-      fill(highlightColor);
-    } else {
-      fill(normalColor);
-    }
+  protected void drawSpecifics() {
     stroke(255);
     rect(x, y, size, size); 
   }

@@ -1,3 +1,12 @@
+# In this branch (`drawSpecifics`)
+
+We refactored some of the common functionality of the `draw()`-method out.
+
+Is it worth it? (What if we add another Button-type where the commonality does not apply?)
+
+
+# Original
+
 We started from this standard Processing example : https://processing.org/examples/button.html
 and refactored (albeit with slightly different mechanics for choosing the background-color) 
 it into an objected-oriented design with an abstract `Button`-class and 2 inheriting classes :
