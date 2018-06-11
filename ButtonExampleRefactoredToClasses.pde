@@ -1,33 +1,21 @@
-abstract class Button {
-  protected int x, y;
-  protected int size;
-  protected color highlightColor;
-  protected color normalColor;
-  
-  public Button(int x, int y, int size) {
+class CircleButton {
+
+  private int x, y;
+  private int size;
+  private color highlightColor;
+  private color normalColor;
+
+  public CircleButton(int x, int y, int size) {
     this.x = x;
     this.y = y;
     this.size = size;
-  }
-  
-  void setHighlightColor(color clr) { this.highlightColor = clr; }
-  void setNormalColor(color clr) { this.normalColor = clr; }
-  
-  boolean mousePressed() {
-    return isMouseOver();
-  }
-  
-  abstract boolean isMouseOver();
-}
 
-
-class CircleButton extends Button {
-  
-  public CircleButton(int x, int y, int size) {
-    super(x, y, size);
   }
-  
-  void draw() {
+
+  public void setHighlightColor(color clr) { this.highlightColor = clr; }
+  public void setNormalColor(color clr) { this.normalColor = clr; }
+
+  public void draw() {
     if (isMouseOver()) {
       fill(highlightColor);
     } else {
@@ -37,7 +25,11 @@ class CircleButton extends Button {
     ellipse(x, y, size, size); 
   }
 
-  boolean isMouseOver() {
+  public boolean mousePressed() {
+    return isMouseOver();
+  }
+
+  private boolean isMouseOver() {
     float disX = x - mouseX;
     float disY = y - mouseY;
     if (sqrt(sq(disX) + sq(disY)) < size/2 ) {
@@ -49,13 +41,24 @@ class CircleButton extends Button {
   
 }
 
-class RectButton extends Button {
-  
+class RectButton {
+
+  private int x, y;
+  private int size;
+  private color highlightColor;
+  private color normalColor;
+
   public RectButton(int x, int y, int size) {
-    super(x, y, size);
+    this.x = x;
+    this.y = y;
+    this.size = size;
+
   }
-  
-  void draw() {
+
+  public void setHighlightColor(color clr) { this.highlightColor = clr; }
+  public void setNormalColor(color clr) { this.normalColor = clr; }
+
+  public void draw() {
     if (isMouseOver()) {
       fill(highlightColor);
     } else {
@@ -65,7 +68,11 @@ class RectButton extends Button {
     rect(x, y, size, size); 
   }
 
-  boolean isMouseOver() {
+  public boolean mousePressed() {
+    return isMouseOver();
+  }
+  
+  private boolean isMouseOver() {
     if (mouseX >= x && mouseX <= x+size && 
       mouseY >= y && mouseY <= y+size) {
       return true;

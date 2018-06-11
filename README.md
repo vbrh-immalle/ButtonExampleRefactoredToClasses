@@ -1,3 +1,14 @@
+# In this branch (`noinheritance`)
+
+In this version we don't use inheritance.
+
+As a consequence there is more duplication in `RectButton` and `CircleButton`.
+
+We also added a few more access specifiers (`public`, `private`). 
+`protected` is not used anymore since there is no more inheritance.
+
+# Original
+
 We started from this standard Processing example : https://processing.org/examples/button.html
 and refactored (albeit with slightly different mechanics for choosing the background-color) 
 it into an objected-oriented design with an abstract `Button`-class and 2 inheriting classes :
